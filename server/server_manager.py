@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+#观察者模式的简单应用
 class ServerManager(object):
     def __init__(self):
         self._event = {}

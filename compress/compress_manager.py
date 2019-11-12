@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 import threading
 
-
+#压缩逻辑管理类，2种压缩方式可以选择，所以使用了策略模式 + 简单工厂方法
 class CompressManager(object):
     def __init__(self):
         self._compress = None

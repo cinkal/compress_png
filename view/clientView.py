@@ -20,6 +20,7 @@ class ClientView(object):
 
         self._remain_var = None
 
+        #逻辑管理类,压缩逻辑放到里面
         self._compress_manager = None
 
     def create_out_frame(self, window, pady):
@@ -143,8 +144,6 @@ class ClientView(object):
             self._compress_manager = compress.compress_manager.CompressManager()
         self._compress_manager.compress(data)
 
-
-
     def updateText(self, value):
         if self._text is None:
             return
@@ -156,9 +155,11 @@ class ClientView(object):
         self._remain_var.set("(剩余压缩张数: " + str(500-value) + " 张)")
 
     def initialize(self):
+        #应用观察者模式,添加时间监听 处理完图片压缩后进行UI更新
         server.manager.listenEvent("update_text", self.updateText)
         server.manager.listenEvent("update_remain_count", self.updateRemainCount)
 
+        #初始化UI
         self._do_after_init()
 
 

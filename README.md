@@ -1,2 +1,9 @@
 # compress_png
-quantpng or tinypng
+用途：用于压缩png图片，有punquant,以及 tinypng 两种方式
+
+目的：回忆各种使用过的设计模式，特地写的一个小工具，仅用作学习
+
+具体内容：
+项目里面用到了 观察者模式，策略模式，简单工厂模式
+
+
