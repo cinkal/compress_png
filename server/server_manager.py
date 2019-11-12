@@ -18,4 +18,4 @@ class ServerManager(object):
 
     def listenEvent(self, event, function):
         self._event.setdefault(event, function)
-        print event, function
+        # print event, function

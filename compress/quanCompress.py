@@ -10,6 +10,7 @@ class QuanCompress(BaseCompress):
     def __init__(self):
         self._inpath = ""
         self._outpath = ""
+        self._exe_path = os.getcwd() + "\libs\pngquant.exe"
 
     def compress(self, data=None):
         if not data is None:
@@ -18,6 +19,10 @@ class QuanCompress(BaseCompress):
 
         if self._inpath == "":
             print "QuanCompress inpath is null"
+            return
+
+        if not os.path.exists(self._exe_path):
+            print "pngquant.exe is null, path=",self._exe_path
             return
 
         temp_inpath = self._inpath
@@ -40,9 +45,12 @@ class QuanCompress(BaseCompress):
             com = " --ext .png -f --quality 50-80 " + file
         else:
             com = " -f --quality 50-80 -o " + outpath + " " + file
-        dir_path = os.getcwd() + "\compress\pngquant\pngquant.exe";
+        dir_path = self._exe_path
+
         command = dir_path + com;
         p = subprocess.Popen(command, shell=True)
         p.wait()
         server.manager.sendEvent("update_text", file)
-        print file
+        # print file
+
+
